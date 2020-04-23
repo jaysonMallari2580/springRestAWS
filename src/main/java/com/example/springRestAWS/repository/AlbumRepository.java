@@ -1,13 +1,21 @@
 package com.example.springRestAWS.repository;
 
 import com.example.springRestAWS.model.Album;
+import com.example.springRestAWS.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class AlbumRepository {
 
     List<Album> albumList = new ArrayList();
+
+    public Album getAlbum(){
+        Album album = new Album("Parokya","90's rock music","url://pic.com");
+        return album;
+    }
 
     public Album saveAlbum(Album album) {
         album.setAlbumId(albumList.size() + 1);

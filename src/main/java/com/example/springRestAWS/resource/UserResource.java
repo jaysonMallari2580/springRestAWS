@@ -17,7 +17,6 @@ public class UserResource {
 
     @GetMapping("/user")
     public User getUser(){
-
         return userService.getUser();
     }
 

@@ -1,11 +1,14 @@
 package com.example.springRestAWS.service;
 
 import com.example.springRestAWS.model.Album;
+import com.example.springRestAWS.model.User;
 import com.example.springRestAWS.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AlbumService {
 
     @Autowired
@@ -17,6 +20,10 @@ public class AlbumService {
     }
 
     //GET/VIEW
+    public Album getAlbum() {
+        return albumRepository.getAlbum();
+    }
+
     public List<Album> getAllAlbums() {
         return albumRepository.getAllAlbums();
     }
@@ -34,4 +41,6 @@ public class AlbumService {
     public Album deleteAlbum(int albumId) {
         return albumRepository.deleteAlbum(albumId);
     }
+
+
 }

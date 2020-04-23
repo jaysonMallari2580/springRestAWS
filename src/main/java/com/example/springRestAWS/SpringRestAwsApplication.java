@@ -9,6 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SpringRestAwsApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SpringRestAwsApplication.class, args);
 	}
 

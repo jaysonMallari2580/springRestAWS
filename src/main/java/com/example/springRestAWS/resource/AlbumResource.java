@@ -1,6 +1,7 @@
 package com.example.springRestAWS.resource;
 
 import com.example.springRestAWS.model.Album;
+import com.example.springRestAWS.model.User;
 import com.example.springRestAWS.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,17 @@ public class AlbumResource {
     AlbumService albumService;
 
     //POST/CREATE
-    @PostMapping("/user")
+    @PostMapping("/album")
     public Album saveAlbum(@RequestBody Album album){
         return albumService.saveAlbum(album);
     }
 
     //GET/VIEW
+    @GetMapping("/album")
+    public Album getAlbum(){
+        return albumService.getAlbum();
+    }
+
     @GetMapping("/allAlbums")
     public List<Album> getAllAlbums(){
         return albumService.getAllAlbums();

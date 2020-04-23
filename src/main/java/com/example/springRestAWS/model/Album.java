@@ -6,8 +6,7 @@ public class Album {
     private String albumDescription;
     private String albumCoverPicUrl;
 
-    public Album(int albumId, String albumName, String albumDescription, String albumCoverPicUrl) {
-        this.albumId = albumId;
+    public Album(String albumName, String albumDescription, String albumCoverPicUrl) {
         this.albumName = albumName;
         this.albumDescription = albumDescription;
         this.albumCoverPicUrl = albumCoverPicUrl;
