@@ -39,6 +39,7 @@ public class CommentResource {
     }
 
     //DELETE
+    @DeleteMapping
     public void deleteComment(@RequestParam(name="commentId") String commentId){
         commentService.deleteComment(commentId);
     }
