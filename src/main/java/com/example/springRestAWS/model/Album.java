@@ -1,22 +1,29 @@
 package com.example.springRestAWS.model;
 
-public class Album {
-    private int albumId;
-    private String albumName;
-    private String albumDescription;
-    private String albumCoverPicUrl;
+import org.springframework.data.annotation.Id;
 
-    public Album(String albumName, String albumDescription, String albumCoverPicUrl) {
+import java.util.Date;
+
+public class Album {
+    @Id
+    private String albumId;
+    private String albumName;
+    private String albumCoverPhotoUrl;
+    private String albumCreatedBy;
+    private Date dateCreated;
+
+    public Album(String albumName, String albumCoverPhotoUrl, String albumCreatedBy, Date dateCreated) {
         this.albumName = albumName;
-        this.albumDescription = albumDescription;
-        this.albumCoverPicUrl = albumCoverPicUrl;
+        this.albumCoverPhotoUrl = albumCoverPhotoUrl;
+        this.albumCreatedBy = albumCreatedBy;
+        this.dateCreated = dateCreated;
     }
 
-    public int getAlbumId() {
+    public String getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(int albumId) {
+    public void setAlbumId(String albumId) {
         this.albumId = albumId;
     }
 
@@ -28,19 +35,28 @@ public class Album {
         this.albumName = albumName;
     }
 
-    public String getAlbumDescription() {
-        return albumDescription;
+    public String getAlbumCoverPhotoUrl() {
+        return albumCoverPhotoUrl;
     }
 
-    public void setAlbumDescription(String albumDescription) {
-        this.albumDescription = albumDescription;
+    public void setAlbumCoverPhotoUrl(String albumCoverPhotoUrl) {
+        this.albumCoverPhotoUrl = albumCoverPhotoUrl;
     }
 
-    public String getAlbumCoverPicUrl() {
-        return albumCoverPicUrl;
+    public String getAlbumCreatedBy() {
+        return albumCreatedBy;
     }
 
-    public void setAlbumCoverPicUrl(String albumCoverPicUrl) {
-        this.albumCoverPicUrl = albumCoverPicUrl;
+    public void setAlbumCreatedBy(String albumCreatedBy) {
+        this.albumCreatedBy = albumCreatedBy;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }
+

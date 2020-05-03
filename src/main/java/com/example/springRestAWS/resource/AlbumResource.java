@@ -1,52 +1,54 @@
 package com.example.springRestAWS.resource;
 
 import com.example.springRestAWS.model.Album;
-import com.example.springRestAWS.model.User;
 import com.example.springRestAWS.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/albums")
 public class AlbumResource {
 
     @Autowired
     AlbumService albumService;
 
-    //POST/CREATE
-    @PostMapping("/album")
+    //POST || CREATE
+    @PostMapping
     public Album saveAlbum(@RequestBody Album album){
         return albumService.saveAlbum(album);
     }
 
-    //GET/VIEW
-    @GetMapping("/album")
-    public Album getAlbum(){
-        return albumService.getAlbum();
-    }
-
-    @GetMapping("/allAlbums")
+    //GET || READ
+    @GetMapping
     public List<Album> getAllAlbums(){
         return albumService.getAllAlbums();
     }
 
-    @GetMapping("/album/{albumId}")
-    public Album getAlbumById(@PathVariable("albumId") int albumId){
+    @GetMapping("/{albumId}")
+    public Optional<Album> getAlbumById(@PathVariable("albumId") String albumId){
         return albumService.getAlbumById(albumId);
     }
 
-    //PUT /UPDATE
-    @PutMapping("/album/{albumId}")
-    public Album updateAlbum(@PathVariable("albumId") int albumId, @RequestBody Album album){
-        return albumService.updateAlbum(albumId,album);
+    //PUT  || UPDATE
+    @PutMapping
+    public Album updateAlbum(@RequestBody Album album){
+        return albumService.updateAlbum(album);
     }
 
     //DELETE
-    @DeleteMapping("/album")
-    public Album deleteAlbum(@RequestParam(name="albumId") int albumId){
-        return albumService.deleteAlbum(albumId);
+    @DeleteMapping
+    public void deleteAlbum(@RequestParam(name="albumId") String albumId){
+         albumService.deleteAlbum(albumId);
     }
 
+    /*
+     //GET/VIEW
+    @GetMapping("/album")
+    public Album getAlbum(){
+        return albumService.getAlbum();
+    }
+     */
 }
