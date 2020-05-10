@@ -1,20 +1,41 @@
 package com.example.springRestAWS.model;
 
+import com.example.springRestAWS.validation.ValidName;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 public class User {
     @Id
     private String id;
+    @NotEmpty @ValidName
     private String name;
+    @Length(max=10) @NotEmpty @ValidName
     private String address;
+    @Min(value=13) @Max(value=150)
     private int age;
     private String profilePicUrl;
+    @Email
+    private String email;
 
-    public User(String name, String address, int age, String profilePicUrl) {
+    public User(String name, String address, int age, String profilePicUrl, String email) {
         this.name = name;
         this.address = address;
         this.age = age;
         this.profilePicUrl = profilePicUrl;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getId() {

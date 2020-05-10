@@ -1,9 +1,15 @@
 package com.example.springRestAWS.model;
 
+import com.example.springRestAWS.validation.ValidCreatedBy;
+
+import javax.validation.constraints.Min;
+
 public class Comment {
     private String commentId;
     private String commentPhotoId;
+    @Min(value=5)
     private String commentMessage;
+    @ValidCreatedBy
     private String commentCreatedBy;
 
     public Comment(String commentPhotoId, String commentMessage, String commentCreatedBy) {

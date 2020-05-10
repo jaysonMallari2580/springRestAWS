@@ -28,8 +28,8 @@ public class UserService {
 
 
     //GET / view user by id
-    public Optional<User> getUserById(String id) {
-         return userRepository.findById(id);
+    public User getUserById(String id) {
+        return userRepository.findById(id).get();
     }
 
     // PUT /Update user body of the matching user id
@@ -40,6 +40,14 @@ public class UserService {
     //DELETE
     public void deleteUser(String userId) {
          userRepository.deleteById(userId);
+    }
+
+    public List<User> getByAddress(String address) {
+        return userRepository.findAll();
+    }
+
+    public List<User> getByName(String name) {
+        return userRepository.findAll();
     }
 
     /*

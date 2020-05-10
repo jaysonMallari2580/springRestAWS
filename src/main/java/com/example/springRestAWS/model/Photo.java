@@ -1,5 +1,6 @@
 package com.example.springRestAWS.model;
 
+import com.example.springRestAWS.validation.ValidCreatedBy;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ public class Photo {
     private String photoId;
     private String photoAlbumId;
     private String photoUrl;
+    @ValidCreatedBy
     private String photoCreatedBy;
     private Date photoDateCreated;
 

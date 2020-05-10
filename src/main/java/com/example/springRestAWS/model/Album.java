@@ -1,5 +1,7 @@
 package com.example.springRestAWS.model;
 
+import com.example.springRestAWS.validation.ValidCreatedBy;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -7,8 +9,10 @@ import java.util.Date;
 public class Album {
     @Id
     private String albumId;
+    @Length(max=10)
     private String albumName;
     private String albumCoverPhotoUrl;
+    @ValidCreatedBy
     private String albumCreatedBy;
     private Date dateCreated;
 

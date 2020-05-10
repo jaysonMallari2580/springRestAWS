@@ -5,6 +5,7 @@ import com.example.springRestAWS.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class PhotoResource {
 
     //POST || CREATE
     @PostMapping
-    public Photo savePhoto(@RequestBody Photo photo){
+    public Photo savePhoto(@RequestBody @Valid Photo photo){
         return photoService.savePhoto(photo);
     }
 

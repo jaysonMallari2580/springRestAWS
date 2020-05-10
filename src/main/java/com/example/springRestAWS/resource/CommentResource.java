@@ -5,6 +5,7 @@ import com.example.springRestAWS.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class CommentResource {
 
     // POST || CREATE
     @PostMapping
-    public Comment createComment(@RequestBody Comment comment){
+    public Comment createComment(@RequestBody @Valid Comment comment){
         return commentService.createComment(comment);
     }
 
