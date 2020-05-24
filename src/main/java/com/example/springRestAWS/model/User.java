@@ -22,7 +22,8 @@ public class User {
     @Email
     private String email;
 
-    public User(String name, String address, int age, String profilePicUrl, String email) {
+    public User(String id,String name, String address, int age, String profilePicUrl, String email) {
+        this.id=id;
         this.name = name;
         this.address = address;
         this.age = age;

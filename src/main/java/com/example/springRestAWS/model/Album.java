@@ -16,7 +16,8 @@ public class Album {
     private String albumCreatedBy;
     private Date dateCreated;
 
-    public Album(String albumName, String albumCoverPhotoUrl, String albumCreatedBy, Date dateCreated) {
+    public Album(String albumId,String albumName, String albumCoverPhotoUrl, String albumCreatedBy, Date dateCreated) {
+        this.albumId = albumId;
         this.albumName = albumName;
         this.albumCoverPhotoUrl = albumCoverPhotoUrl;
         this.albumCreatedBy = albumCreatedBy;

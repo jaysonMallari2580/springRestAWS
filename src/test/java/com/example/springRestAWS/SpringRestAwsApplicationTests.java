@@ -1,5 +1,6 @@
 package com.example.springRestAWS;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpringRestAwsApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void sample() {
+		Assert.assertEquals("expected","expected");
 	}
 
 }
