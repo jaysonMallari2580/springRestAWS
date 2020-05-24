@@ -2,7 +2,10 @@ package com.example.springRestAWS.resource;
 
 import com.amazonaws.services.s3.Headers;
 import com.amazonaws.services.s3.model.S3Object;
+import com.example.springRestAWS.model.FirebaseUser;
 import com.example.springRestAWS.service.FileService;
+import com.example.springRestAWS.service.FirebaseService;
+import com.google.firebase.auth.FirebaseAuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -22,9 +25,17 @@ public class FileResource {
     @Autowired
     FileService fileService;
 
+    @Autowired
+    FirebaseService firebaseService;
+
     @PostMapping
-    public boolean upload(@RequestParam(name="file") MultipartFile file){
-        return fileService.upload(file);
+    public boolean upload(@RequestParam(name="file") MultipartFile file, @RequestHeader(name="idToken")String idToken) throws IOException, FirebaseAuthException {
+        FirebaseUser firebaseUser = firebaseService.authenticate(idToken);
+            if(firebaseUser != null){
+                return fileService.upload(file);
+            }else{
+                return false;
+            }
     }
 
     @GetMapping("/view")
@@ -44,8 +55,11 @@ public class FileResource {
     }
 
     @DeleteMapping
-    public void delete(@RequestParam(name="key")String key){
-        fileService.deleteFile(key);
+    public void delete(@RequestParam(name="key")String key, @RequestHeader(name="idToken")String idToken) throws IOException, FirebaseAuthException {
+        FirebaseUser firebaseUser = firebaseService.authenticate(idToken);
+            if(firebaseUser != null){
+                fileService.deleteFile(key);
+            }
     }
 
 }
